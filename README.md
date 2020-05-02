@@ -24,7 +24,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-6) Run the bashrs with source ~/.bashrc
+6) Run the bashrc with source ~/.bashrc
 
 7) Enable passwordless SSH using:
 ssh-keygen -t rsa -P '' 
@@ -89,11 +89,15 @@ export JAVA_HOME=/home/ubuntu/jdk1.8.0_131
 19) Run the MapReduce Java program:
   jar wc.jar WordCount /input /output
   
+ ![Runnnig MapReduce Java Program](https://github.com/LukeJakielaszek/MapReduce_PandasExploration/blob/master/Part1/runMapReduce.PNG)
+  
 20) Retreive the output partitions (you should put these in a directory below the processing.py script called hadoop_data. In this instance processing.py would be in output_dir/processing/processing.py and the partitions are in output_dir/processing/hadoop_data/part-*):
   hdfs dfs -get /output/part-* output_dir/processing/hadoop_data
   
 21) Run the processing.py script from the processing directory:
   python3 processing.py
+  
+ ![Runnnig proccessing.py](https://github.com/LukeJakielaszek/MapReduce_PandasExploration/blob/master/Part1/runProcessing.PNG)
   
 22) View the answers to all problems of Part 1 for the final exam
   
