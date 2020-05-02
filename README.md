@@ -41,60 +41,60 @@ cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
 	<value>hdfs://localhost:9000</value>
 </property>
   
-  9) Add the following line to hadoop-env.sh:
-  export JAVA_HOME=/home/ubuntu/jdk1.8.0_131
+9) Add the following line to hadoop-env.sh:
+export JAVA_HOME=/home/ubuntu/jdk1.8.0_131
   
-  10) Configure mapred-site.xml with the following properties:
+10) Configure mapred-site.xml with the following properties:
   <property>
 		<name>mapred.job.tracker</name>
 		<value>localhost:9001</value><br/>
 	</property>
   
-  11) Configure yarn-site.xml with the following properties:
+11) Configure yarn-site.xml with the following properties:
   <property>
 	<name>yarn.nodemanager.aux-services</name>
 	<value>mapreduce_shuffle</value>
+  </property>
+  
+12) Create a hadoop data directory for the HDFS using mkdir ~/hadoopdata and configure hdfs-site.xml with the following properties:
+  <property>
+	<name>dfs.replication</name>
+	<value>1</value>
+</property>
+<property><name>dfs.name.dir</name>
+	<value>file:///home/ubuntu/hadoopdata/hdfs/namenode</value>
+</property>
+<property>
+	<name>dfs.data.dir</name>
+	<value>file:///home/ubuntu/hadoopdata/hdfs/datanode</value>
 </property>
   
-  12) Create a hadoop data directory for the HDFS using mkdir ~/hadoopdata and configure hdfs-site.xml with the following properties:
-  <property>
-		<name>dfs.replication</name>
-		<value>1</value>
-	</property>
-	<property><name>dfs.name.dir</name>
-		<value>file:///home/ubuntu/hadoopdata/hdfs/namenode</value>
-	</property>
-	<property>
-		<name>dfs.data.dir</name>
-		<value>file:///home/ubuntu/hadoopdata/hdfs/datanode</value>
-	</property>
-  
-  13) Format the NameNode using:
+13) Format the NameNode using:
   hdfs namenode -format
   
-  14) Start the NameNodes and DataNode by running the start-dfs.sh script
+14) Start the NameNodes and DataNode by running the start-dfs.sh script
   
-  15) Start the ResourceManager and NodeManager by running the start-yarn.sh script
+15) Start the ResourceManager and NodeManager by running the start-yarn.sh script
   
-  16) Compile the WordCount Java Program (this has been converted to a bigram counter):
+16) Compile the WordCount Java Program (this has been converted to a bigram counter):
   Hadoop-2.7.3/bin/hadoop com.sun.tools.javac.Main WordCount.java
   jar cf wc.jar WordCount*.class
   
-  17) Create an input directory for the MapReduce program:
+17) Create an input directory for the MapReduce program:
   hdfs dfs -mkdir /input
   
-  18) Add the text file to the input directory:
+18) Add the text file to the input directory:
   hdfs dfs -put myfile.txt /input
   
-  19) Run the MapReduce Java program:
+19) Run the MapReduce Java program:
   jar wc.jar WordCount /input /output
   
-  20) Retreive the output partitions (you should put these in a directory below the processing.py script called hadoop_data. In this instance processing.py would be in output_dir/processing/processing.py and the partitions are in output_dir/processing/hadoop_data/part-*):
+20) Retreive the output partitions (you should put these in a directory below the processing.py script called hadoop_data. In this instance processing.py would be in output_dir/processing/processing.py and the partitions are in output_dir/processing/hadoop_data/part-*):
   hdfs dfs -get /output/part-* output_dir/processing/hadoop_data
   
-  21) Run the processing.py script from the processing directory:
+21) Run the processing.py script from the processing directory:
   python3 processing.py
   
-  22) View the answers to all problems of Part 1 for the final exam
+22) View the answers to all problems of Part 1 for the final exam
   
 ## Part 2 
