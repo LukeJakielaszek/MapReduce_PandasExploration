@@ -108,4 +108,4 @@ export JAVA_HOME=/home/ubuntu/jdk1.8.0_131
 python3 analysis.py path/to/illinois_exec.csv path/to/ohio_exec.csv path/to/output_file.csv 
 ![Runnnig analysis.py](https://github.com/LukeJakielaszek/MapReduce_PandasExploration/blob/master/Part2/runProgram.PNG)
 
-3) View the results in terminal
+3) View the answers to all problems of Part 2 for the final exam
