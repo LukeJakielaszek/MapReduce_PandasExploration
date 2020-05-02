@@ -98,3 +98,7 @@ export JAVA_HOME=/home/ubuntu/jdk1.8.0_131
 22) View the answers to all problems of Part 1 for the final exam
   
 ## Part 2 
+1) Download the illinois_exec.csv and ohio_exec.csv files that were constructed in project 2 of this class.
+
+2) Run the analysis script using:
+python3 analysis.py path/to/illinois_exec.csv path/to/ohio_exec.csv path/to/output_file.csv 
