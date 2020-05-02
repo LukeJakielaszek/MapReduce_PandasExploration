@@ -3,6 +3,7 @@
 
 import pandas as pd
 import datetime
+import sys
 
 # always display all columns
 pd.set_option('display.max_columns', None)
@@ -13,15 +14,23 @@ pd.set_option('display.width', None)
 #limit the width of the columns
 pd.set_option('display.max_colwidth', 25)
 
-# input files
-illinois_filename = "./data/illinois_exec.csv"
-ohio_filename = "./data/ohio_exec.csv"
-
-# output file
-out_filename = "./data/merged.csv"
-
 if __name__ == "__main__":
+    # ensure the number of args supplied is correct
+    if(len(sys.argv) != 4):
+        print("ERROR: Invalid number of params - Required : 4 - Given : " +
+              str(len(sys.argv)))
+        print("\tFormat: python3 processing.py illinois_file ohio_file output_file")
+        
+        exit(-1)
 
+    # input files
+    illinois_filename = sys.argv[1]
+    ohio_filename = sys.argv[2]
+
+    # output file
+    out_filename = sys.argv[3]
+
+        
     # PROBLEM 3
     print("------------------------- PROBLEM 3 -------------------------")
 
